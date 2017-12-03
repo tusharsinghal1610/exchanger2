@@ -1,0 +1,45 @@
+{
+  "name": "exchange",
+  "version": "1.0.0",
+  "description": "sell and buy",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tusharsinghal1610/exchange.git"
+  },
+  "keywords": [
+    "sell",
+    "buy",
+    "exchange"
+  ],
+  "author": "Tushar Singhal, Sudhanshu Shekhar Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tusharsinghal1610/exchange/issues"
+  },
+  "homepage": "https://github.com/tusharsinghal1610/exchange#readme",
+  "dependencies": {
+    "antd": "^2.13.7",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "faker": "^4.1.0",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.12.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-responsive": "^3.0.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.0.14",
+    "react-slick": "^0.15.4",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.74.2"
+  }
+}
