@@ -211,7 +211,7 @@ handleChange=(e,{name,value})=>{
 }
 handleClose = () => this.setState({ active: false })
 handleSubmit=e=>{
-  if(this.state.firstname.length<1||this.state.lastname.length<1||this.state.username.length<1||this.state.email.length<1||this.state.password.length<1||this.state.confirmPassword.length<1||this.state.country.length<1||this.state.state.length<1||this.state.pin.length<1||this.state.address1.length<1){
+  if(this.state.firstname.length<1||this.state.lastname.length<1||this.state.username.length<1||this.state.email.length<1||this.state.password.length<1||this.state.confirmPassword.length<1||this.state.state.length<1||this.state.pin.length<1||this.state.address1.length<1){
         this.setState({errorHeader:'Field is Empty'})
         this.setState({errorMessage:'All Fields are Required!'})
         this.setState({active:true});
@@ -266,6 +266,11 @@ handleSubmit=e=>{
           .catch((error)=>{
               console.log(error);
               console.log("erooooooooooooooor");
+              this.setState({
+                active:true,
+                errorHeader:'error!',
+                errorMessage:'an unexpected error occured'
+            }) 
           });
 }
 }

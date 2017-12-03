@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Button, Icon, Header, Grid, Card } from 'semantic-ui-react'
 import Header1 from './header'
 import Pcard from './Pcard'
-export default class App extends React.Component {
+export default class Electronics extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -14,18 +14,17 @@ export default class App extends React.Component {
                 <br /><br /><br /><br />
                 <center>
                     <Button.Group>
-                        <Button basic color='grey'><a href="electronics"><b><Icon name='mobile' /> Electronics</b></a></Button>
-                        <Button basic color='grey'><b><Icon name='bed' /> Furnitures</b></Button>
-                        <Button basic color='grey'><b><Icon name='car' /> Cars</b></Button>
-                        <Button basic color='grey'><b><Icon name='like' /> Pets</b></Button>
-                        <Button basic color='grey'><b><Icon name='building' /> Properties</b></Button>
-                        <Button basic color='grey'><b><Icon name='home' /> Home Appliances</b></Button>
+                        <Button basic color='grey'><b><Icon name='mobile' /> Mobiles</b></Button>
+                        <Button basic color='grey'><b><Icon name='television' /> television</b></Button>
+                        <Button basic color='grey'><b><Icon name='laptop' /> Laptops</b></Button>
+                        <Button basic color='grey'><b><Icon name='window minimize' />Air Conditioners</b></Button>
+                        <Button basic color='grey'><b><Icon name='shopping bag' /> Others</b></Button>
                     </Button.Group>
                 </center>
                 <Header
                     as='h2'
-                    icon='shopping bag'
-                    content='Trending Products'
+                    icon='mobile'
+                    content='Electronics'
                 />
                 <Grid padded>
                     <Grid.Row columns={5} stackable>

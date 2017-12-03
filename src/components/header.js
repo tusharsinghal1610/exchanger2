@@ -46,7 +46,7 @@ var isLoggedin=()=>{
             sessionStorage.setItem('emailId',localStorage.getItem('emailId'));                
             return true;
     }else{
-        return false;
+        return true;
     }
 }
 export default class Header1 extends Component {
@@ -87,12 +87,12 @@ export default class Header1 extends Component {
     if(loggedin){
          right= <Menu.Menu position='right'>
          <Menu.Item name="cart" href = "#">
-        <Icon name="cart" color="teal"/>
-        Cart
+        <a href="cart"><Icon name="cart" color="teal"/>
+        Cart</a>
         </Menu.Item>
         <Menu.Item name="Notification" href = "#">
-        <Icon name="bell" color="teal"/>
-        Notification
+        <a href="notifications"><Icon name="bell" color="teal"/>
+        Notification</a>
         </Menu.Item>
         <Menu.Item><Drop name='tushar'/></Menu.Item>
           </Menu.Menu>;
