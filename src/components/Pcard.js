@@ -19,13 +19,13 @@ const extra = (
 )
 
 const Pcard = (props) => (
-  <Card
+  <a href="productdescription"><Card
     image={props.imgurl}
     header={props.productname}
     meta={props.category}
     description={'Buy: Rs'+props.buyprice +'  Rent: Rs' + props.rentprice}
     extra={extra}
-  />
+  /></a>
 )
 
 export default Pcard

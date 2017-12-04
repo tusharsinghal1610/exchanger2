@@ -1,8 +1,9 @@
 
-import React, { Component } from 'react'
-import { Button, Icon, Header, Grid, Card } from 'semantic-ui-react'
-import Header1 from './header'
-import Pcard from './Pcard'
+import React, { Component } from 'react';
+import { Button, Icon, Header, Grid, Card } from 'semantic-ui-react';
+import Header1 from './header';
+import Pcard from './Pcard';
+import Postad from './postad'
 export default class App extends React.Component {
     constructor(props) {
         super(props)
@@ -49,7 +50,7 @@ export default class App extends React.Component {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-                
+                <Postad/>
             </div>
         )
     }

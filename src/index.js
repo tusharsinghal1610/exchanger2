@@ -7,6 +7,7 @@ import login from './components/login';
 import Electronics from './components/electronics';
 import Cart from './components/cart';
 import Notifications from './components/notifications';
+import Productdes from './components/productdescription';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -17,6 +18,7 @@ ReactDOM.render(
           <Route exact path="/cart" component ={Cart} />
           <Route exact path="/notifications" component ={Notifications} />
           <Route exact path="/electronics" component ={Electronics} />
+          <Route exact path="/productdescription" component ={Productdes} />
     </Switch>
     </BrowserRouter>,
     document.getElementById('root'));
