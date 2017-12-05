@@ -205,7 +205,7 @@ export default class Signup extends Component {
     pin:'',
     address1:'',
     address2:'', 
-    code:Math.floor(Math.random() * (10000 - 1000)) + 1000,
+    verificationcode:Math.floor(Math.random() * (10000 - 1000)) + 1000,
 }
 handleChange=(e,{name,value})=>{
   this.setState({[name]:value});
@@ -244,7 +244,7 @@ handleSubmitSignUp=e=>{
                   "city":this.state.city,
                   "state":this.state.state,
                   "pin":this.state.pin,
-                  "verificationcode":this.state.code
+                  "verificationcode":this.state.verificationcode
           })
       }).then((response)=>response.json())
           .then((responseJson)=>{
@@ -266,12 +266,12 @@ handleSubmitSignUp=e=>{
                             label='Enter Verification code'
                             fluid
                             type='number'
-                            placeholder='code'
+                            placeholder='code1'
                             name='code'
                             value={this.state.code} onChange={this.handleChange}
                           />
                           
-            <Form.Button type='submit' color='teal' fluid size='large'>Signup</Form.Button>
+            <Form.Button type='submit' color='teal' fluid size='large'>Submit Code</Form.Button>
                         </Form></div>
                   })
               }
