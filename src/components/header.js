@@ -46,7 +46,7 @@ var isLoggedin=()=>{
             sessionStorage.setItem('emailId',localStorage.getItem('emailId'));                
             return true;
     }else{
-        return true;
+        return false;
     }
 }
 export default class Header1 extends Component {

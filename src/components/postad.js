@@ -15,12 +15,12 @@ export default class Postad extends React.Component{
             paddingBottom:15
         }
         return(
-            <div><Button circular style={mystyle}>
+            <div><a href="addpform"><Button circular style={mystyle}>
                 
                 <h2 style={mystyle2}><Icon name="write" fitted/><br/>Post ad</h2>
               
                 
-                </Button>
+                </Button></a>
                 </div>
         )
     }
