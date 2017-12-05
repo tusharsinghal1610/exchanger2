@@ -300,7 +300,7 @@ handleSubmitCode=e=>{
               value={this.state.code} onChange={this.handleChange}
             />
             
-<Form.Button type='submit' color='teal' fluid size='large'>Signup</Form.Button>
+<Form.Button type='submit' color='teal' fluid size='large'>Submit Code</Form.Button>
           </Form></div>})
         this.setState({active:true});
     }
@@ -334,7 +334,7 @@ handleSubmitCode=e=>{
                         value={this.state.code} onChange={this.handleChange}
                       />
                       
-          <Form.Button type='submit' color='teal' fluid size='large'>Signup</Form.Button>
+          <Form.Button type='submit' color='teal' fluid size='large'>Submit Code</Form.Button>
                     </Form></div>
 
                 })
