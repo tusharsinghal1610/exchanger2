@@ -243,7 +243,8 @@ handleSubmitSignUp=e=>{
                   "address2":this.state.address2,
                   "city":this.state.city,
                   "state":this.state.state,
-                  "pin":this.state.pin
+                  "pin":this.state.pin,
+                  "verificationcode":this.state.code
           })
       }).then((response)=>response.json())
           .then((responseJson)=>{
