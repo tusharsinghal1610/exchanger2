@@ -206,9 +206,22 @@ export default class Signup extends Component {
     address1:'',
     address2:'', 
     verificationcode:Math.floor(Math.random() * (10000 - 1000)) + 1000,
+    show:false
 }
 handleChange=(e,{name,value})=>{
   this.setState({[name]:value});
+}
+handleChangeCode1=(e)=>{
+  this.setState({code1:e.target.value});
+  this.setState({code:this.state.code1});
+}
+handleChangeCode2=(e)=>{
+  this.setState({code2:e.target.value});
+  this.setState({code:this.state.code2});
+}
+handleChangeCode3=(e)=>{
+  this.setState({code3:e.target.value});
+  this.setState({code:this.state.code3});
 }
 handleClose = () => this.setState({ active: false })
 handleSubmitSignUp=e=>{
@@ -261,18 +274,8 @@ handleSubmitSignUp=e=>{
                   this.setState({
                       active:true,
                       errorHeader:'Your registration is done!',
-                      errorMessage:<div>Now go to your email and enter the code below <br/><Form size='large' onSubmit={this.handleSubmitCode}>
-                      <Form.Input
-                            label='Enter Verification code'
-                            fluid
-                            type='number'
-                            placeholder='code1'
-                            name='code'
-                            value={this.state.code} onChange={this.handleChange}
-                          />
-                          
-            <Form.Button type='submit' color='teal' fluid size='large'>Submit Code</Form.Button>
-                        </Form></div>
+                      errorMessage:<div>Now go to your email and enter the code below</div>,
+                      show:true
                   })
               }
           })
@@ -289,25 +292,18 @@ handleSubmitSignUp=e=>{
 }
 handleSubmitCode=e=>{
   if(this.state.code.length<1){
-        this.setState({errorHeader:' code Field is Empty'})
-        this.setState({errorMessage:<div>Now go to your email and enter the code below <br/><Form size='large' onSubmit={this.handleSubmitCode}>
-        <Form.Input
-              label='Enter Verification code'
-              fluid
-              type='number'
-              placeholder='code'
-              name='code'
-              value={this.state.code} onChange={this.handleChange}
-            />
-            
-<Form.Button type='submit' color='teal' fluid size='large'>Submit Code</Form.Button>
-          </Form></div>})
-        this.setState({active:true});
+        
+        this.setState({
+          errorHeader:' code Field is Empty',
+          errorMessage:<div>Now go to your email and enter the code below </div>,
+          active:true,
+          show:true
+        })
     }
     
    
     else{ 
-      fetch('http://localhost:8080/verify',{
+      fetch('http://localhost:8080/signup',{
           method:'POST',
           headers:{
               'Accept':'application/json',
@@ -324,18 +320,8 @@ handleSubmitCode=e=>{
                 this.setState({
                   active:true,
                   errorHeader:"code not valid",
-                  errorMessage:<div>enter the code below again<br/><Form size='large' onSubmit={this.handleSubmitCode}>
-                  <Form.Input
-                        label='Enter Verification code'
-                        fluid
-                        type='number'
-                        placeholder='code'
-                        name='code'
-                        value={this.state.code} onChange={this.handleChange}
-                      />
-                      
-          <Form.Button type='submit' color='teal' fluid size='large'>Submit Code</Form.Button>
-                    </Form></div>
+                  errorMessage:<div>enter the code below again</div>,
+                  show:true
 
                 })
               }else if(responseJson.success){
@@ -361,7 +347,7 @@ handleSubmitCode=e=>{
 }
 render(){
   
-  const {firstname,lastname,email,contact,password,confirmPassword,city,state,pin,address1,address2,active,errorHeader,errorMessage,code}=this.state;
+  const {firstname,lastname,email,contact,password,confirmPassword,city,state,pin,address1,address2,active,errorHeader,errorMessage,code,show}=this.state;
   var mystyle={
     backgroundColor:'#ebebe0'
   }
@@ -488,7 +474,18 @@ return (
           <Header as='h2' icon inverted>
            
             {errorHeader}!
-            <Header.Subheader>{errorMessage}</Header.Subheader>
+            <Header.Subheader>{errorMessage}{(show)?<div><br/><Form size='large' onSubmit={this.handleSubmitCode}>
+                      <Form.Input
+                            label='Enter Verification code'
+                            fluid
+                            type='number'
+                            placeholder='code'
+                            name='code'
+                            value={this.state.code} onChange={this.handleChange}
+                          />
+                          
+            <Form.Button type='submit' color='teal' fluid size='large'>Submit Code</Form.Button>
+                        </Form></div>:<div></div>}</Header.Subheader>
           </Header>
           
         
