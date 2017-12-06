@@ -318,8 +318,8 @@ handleSubmitCode=e=>{
                   this.setState({
                       active:true,
                       errorHeader:'You are a verified user now!',
-                      errorMessage:'Congratulations , You are a verified user now' 
-                       
+                      errorMessage:'Congratulations , You are a verified user now', 
+                      show:false
                   })
               }
           })
