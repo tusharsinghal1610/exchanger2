@@ -230,7 +230,7 @@ export default class Addpform extends React.Component{
                 
             <Form.Input label='Rent Price' placeholder='Rent Price(leave blank if not available for rent)' name='name' value={name} onChange={this.handleChange} />
             
-            <Form.Input label='Cost Price' placeholder='Cost Price(leave blank if not available for rent)' name='name' value={name} onChange={this.handleChange} />
+            <Form.Input label='Sell Price' placeholder='Cost Price(leave blank if not available for selling)' name='name' value={name} onChange={this.handleChange} />
         </Form.Group>
         <Form.TextArea label='Description' placeholder="write something about product(it's condition) , years of use, what this product do etc"/>
             <Form.Button content='Submit' />

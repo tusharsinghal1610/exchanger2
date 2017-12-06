@@ -211,18 +211,7 @@ export default class Signup extends Component {
 handleChange=(e,{name,value})=>{
   this.setState({[name]:value});
 }
-handleChangeCode1=(e)=>{
-  this.setState({code1:e.target.value});
-  this.setState({code:this.state.code1});
-}
-handleChangeCode2=(e)=>{
-  this.setState({code2:e.target.value});
-  this.setState({code:this.state.code2});
-}
-handleChangeCode3=(e)=>{
-  this.setState({code3:e.target.value});
-  this.setState({code:this.state.code3});
-}
+
 handleClose = () => this.setState({ active: false })
 handleSubmitSignUp=e=>{
   if(this.state.firstname.length<1||this.state.lastname.length<1||this.state.contact.length<1||this.state.email.length<1||this.state.password.length<1||this.state.confirmPassword.length<1||this.state.state.length<1||this.state.pin.length<1||this.state.address1.length<1){
@@ -303,7 +292,7 @@ handleSubmitCode=e=>{
     
    
     else{ 
-      fetch('http://localhost:8080/signup',{
+      fetch('http://localhost:8080/signup/verify',{
           method:'POST',
           headers:{
               'Accept':'application/json',
@@ -311,7 +300,7 @@ handleSubmitCode=e=>{
           },
           body:JSON.stringify({
                   "email":this.state.email,
-                  "code":this.state.code
+                  "verificationcode":this.state.code
           })
       }).then((response)=>response.json())
           .then((responseJson)=>{
