@@ -9,7 +9,7 @@ import Cart from './components/cart';
 import Notifications from './components/notifications';
 import Addp from './components/addproduct';
 import Addpform from './components/addpform';
-
+import geolocation from './components/geolocation';
 ReactDOM.render(
     <BrowserRouter>
     <Switch>
@@ -21,6 +21,7 @@ ReactDOM.render(
           <Route exact path="/electronics" component ={Electronics} />
           <Route exact path="/addproduct" component ={Addp} />
           <Route exact path="/addpform" component ={Addpform} />
+          <Route exact path="/geolocation" component ={geolocation} />
     </Switch>
     </BrowserRouter>,
     document.getElementById('root'));

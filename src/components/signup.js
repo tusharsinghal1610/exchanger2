@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown , Select, Dimmer, Icon} from 'semantic-ui-react'
-import Header1 from './header'
-
+import React, {Component} from 'react';
+import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown , Select, Dimmer, Icon} from 'semantic-ui-react';
+import Header1 from './header';
+import {geolocated} from 'react-geolocated';
 const cities =[
 
 ]
@@ -192,7 +192,7 @@ const States = [
 }
 
 ]
-export default class Signup extends Component {
+class Signup extends Component {
   state={
     firstname:'',
     lastname:'',
@@ -246,7 +246,9 @@ handleSubmitSignUp=e=>{
                   "city":this.state.city,
                   "state":this.state.state,
                   "pin":this.state.pin,
-                  "verificationcode":this.state.verificationcode
+                  "verificationcode":this.state.verificationcode,
+                  "latitude":this.props.coords.latitude,
+                  "longitude":this.props.coords.longitude
           })
       }).then((response)=>response.json())
           .then((responseJson)=>{
@@ -259,8 +261,12 @@ handleSubmitSignUp=e=>{
 
                 })
               }else if(responseJson.success){
-                console.log("registration done");
-                  this.setState({
+                console.log("registration done");    
+                sessionStorage.setItem('email',this.state.email);
+                sessionStorage.setItem('firstname',this.state.firstname); 
+                localStorage.setItem('email',this.state.email);
+                localStorage.setItem('firstname',this.state.firstname);
+                this.setState({
                       active:true,
                       errorHeader:'Your registration is done!',
                       errorMessage:<div>Now go to your email and enter the code below</div>,
@@ -486,3 +492,9 @@ return (
 )
 }
 }
+export default geolocated({
+  positionOptions: {
+    enableHighAccuracy: false,
+  },
+  userDecisionTimeout: 5000,
+})(Signup);
