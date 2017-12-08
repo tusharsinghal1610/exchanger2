@@ -245,7 +245,7 @@ handleClose = () => this.setState({ active: false })
         this.setState({
           productId: responseJson.productId
         });
-        console.log("got product id   " + this.state.productid);
+        console.log("got product id   " + this.state.productId);
       })
       .catch((error) => {
         console.log(error);
@@ -349,7 +349,7 @@ handleClose = () => this.setState({ active: false })
                 action={'http://localhost:8080/upload'}
                 listType="picture-card"
                 data={{
-                  productId: this.state.productid
+                  productId: this.state.productId
                 }}
                 fileList={fileList}
                 accept="image/*"
