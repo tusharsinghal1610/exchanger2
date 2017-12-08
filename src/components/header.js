@@ -36,14 +36,13 @@ const source=[
   }
 ]
 var isLoggedin=()=>{
-    if(sessionStorage.getItem('email')){
+    if(sessionStorage.getItem('userId')){
         return true;
     }
-    else if(localStorage.getItem('accessToken')){
+    else if(localStorage.getItem('userId')){
             sessionStorage.setItem('name',localStorage.getItem('name'));
             sessionStorage.setItem('userId',localStorage.getItem('userId'));
-            sessionStorage.setItem('accessToke',localStorage.getItem('accessToken'));
-            sessionStorage.setItem('emailId',localStorage.getItem('emailId'));                
+            sessionStorage.setItem('emailId',localStorage.getItem('email'));                
             return true;
     }else{
         return false;

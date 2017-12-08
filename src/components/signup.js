@@ -208,7 +208,7 @@ class Signup extends Component {
     address2:'', 
     verificationcode:Math.floor(Math.random() * (10000 - 1000)) + 1000,
     show:false,
-    redirection:true
+    redirection:false
 }
 handleChange=(e,{name,value})=>{
   this.setState({[name]:value});
@@ -266,8 +266,10 @@ handleSubmitSignUp=e=>{
                 console.log("registration done");    
                 sessionStorage.setItem('email',this.state.email);
                 sessionStorage.setItem('firstname',this.state.firstname); 
+                sessionStorage.setItem('userId',responseJson.userid); 
                 localStorage.setItem('email',this.state.email);
                 localStorage.setItem('firstname',this.state.firstname);
+                localStorage.setItem('userId',responseJson.userid); 
                 this.setState({
                       active:true,
                       errorHeader:'Your registration is done!',

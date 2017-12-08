@@ -8,8 +8,17 @@ const options = [
   
 ]
 
-const Drop = (props) => (
-  <Dropdown text={"Hello " + props.name} options={options} />
-)
-
-export default Drop
+export default class Drop extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  handlelogoutclick=()=>{
+    sessionStorage.clear();
+    localStorage.clear();
+    }
+  render(){
+    return(
+      <Dropdown text={"Hello " + this.props.name} options={options} />
+    )
+  }
+}

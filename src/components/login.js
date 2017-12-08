@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown, Select, Dimmer, Icon } from 'semantic-ui-react'
-import Header1 from './header'
-
+import React, { Component } from 'react';
+import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown, Select, Dimmer, Icon } from 'semantic-ui-react';
+import Header1 from './header';
+import { Redirect } from 'react-router';
 
 export default class login extends Component {
     state = {
         email: '',
         password: '',
+        redirection:true
     }
     handleChange = (e, { name, value }) => {
         this.setState({ [name]: value });
@@ -35,16 +36,21 @@ export default class login extends Component {
                         console.log("login failed");
                         this.setState({
                             active: true,
-                            errorHeader: "you can't be logged in",
-                            errorMessage: responseJson.error
-
+                            errorHeader: "you can't be logged in"
                         })
                     } else if (responseJson.success) {
+                        console.log("registration done");    
+                        sessionStorage.setItem('email',this.state.email);
+                        sessionStorage.setItem('firstname',responseJson.firstname); 
+                        sessionStorage.setItem('userId',responseJson.userid); 
+                        localStorage.setItem('email',this.state.email);
+                        localStorage.setItem('firstname',responseJson.firstname);
+                        localStorage.setItem('userId',responseJson.userid);
                         console.log("logged in");
+
                         this.setState({
-                            active: true,
-                            errorHeader: 'You are logged in!',
-                            errorMessage: 'logged in'
+                            redirection:true,
+                            errorHeader: "you are logged in"
                         })
                     }
                 })
@@ -65,6 +71,9 @@ export default class login extends Component {
         var mystyle = {
             backgroundColor: '#ebebe0'
         }
+        if (this.state.redirection) {
+            return <Redirect to=''/>;
+          }
         return (
             <div>
                 <Header1 />
