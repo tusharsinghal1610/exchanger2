@@ -36,7 +36,7 @@ const source=[
   }
 ]
 var isLoggedin=()=>{
-    if(sessionStorage.getItem('accessToken')){
+    if(sessionStorage.getItem('email')){
         return true;
     }
     else if(localStorage.getItem('accessToken')){
@@ -94,7 +94,7 @@ export default class Header1 extends Component {
         <a href="notifications"><Icon name="bell" color="teal"/>
         Notification</a>
         </Menu.Item>
-        <Menu.Item><Drop name='tushar'/></Menu.Item>
+        <Menu.Item><Drop name={sessionStorage.getItem("firstname")}/></Menu.Item>
           </Menu.Menu>;
     }
     else{

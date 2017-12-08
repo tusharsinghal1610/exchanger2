@@ -5,7 +5,7 @@ import Header1 from './header'
 
 export default class login extends Component {
     state = {
-        username: '',
+        email: '',
         password: '',
     }
     handleChange = (e, { name, value }) => {
@@ -13,13 +13,13 @@ export default class login extends Component {
     }
     handleClose = () => this.setState({ active: false })
     handleSubmit = e => {
-        if (this.state.username.length < 1 || this.state.password.length < 1) {
+        if (this.state.email.length < 1 || this.state.password.length < 1) {
             this.setState({ errorHeader: 'Field is Empty' })
             this.setState({ errorMessage: 'All Fields are Required!' })
             this.setState({ active: true });
         }
         else {
-            fetch('http://localhost:8080/', {
+            fetch('http://localhost:8080/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -61,7 +61,7 @@ export default class login extends Component {
     }
     render() {
 
-        const { username, password, active,errorHeader,errorMessage } = this.state;
+        const { email, password, active,errorHeader,errorMessage } = this.state;
         var mystyle = {
             backgroundColor: '#ebebe0'
         }
@@ -87,9 +87,9 @@ export default class login extends Component {
                                         fluid
                                         icon='user'
                                         iconPosition='left'
-                                        placeholder='Username'
-                                        name='username'
-                                        value={username} onChange={this.handleChange}
+                                        placeholder='email'
+                                        name='email'
+                                        value={email} onChange={this.handleChange}
                                     />
 
                                     <Form.Input

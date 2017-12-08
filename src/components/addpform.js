@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import { Header, Grid, Button, Icon, Form } from 'semantic-ui-react';
+import {  Modal } from 'antd';
+import Upload from 'antd/lib/upload';  
+import 'antd/lib/upload/style/css';
 import Header1 from './header'
 const States = [
     
@@ -190,12 +193,68 @@ const States = [
   
   ]
 export default class Addpform extends React.Component{
-    state = { name: '', email: '', submittedName: '', submittedEmail: '' }
+    state = { name: '', 
+              email: '', 
+              submittedName: '',
+              submittedEmail: '',
+              previewVisible: false,
+              previewImage: '',
+              fileURL:[],
+              fileList: [],
+              productid:""
+            }
     
       handleChange = (e, { name, value }) => this.setState({ [name]: value })
-    
+      handlePreview = (file) => {
+        this.setState({
+          previewImage: file.url || file.thumbUrl,
+          previewVisible: true,
+        });
+      }
+      handleChangeImage = ({ fileList }) => {
+        var URLs=[];
+        for(var item in fileList){
+          if(fileList[item].response){
+            URLs.push(fileList[item].response.message)
+          }
+        }
+        this.setState({fileURL:URLs});
+        this.setState({ fileList })
+      }
+      componentWillMount() {
+        console.log('Component WILL MOUNT!');
+        fetch('http://localhost:8080/upload/getproductid', {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              "email": "hello"
+          })
+      }).then((response) => response.json())
+          .then((responseJson) => {
+            
+                  console.log("got product id");
+                  this.setState({
+                    productid:responseJson.productId
+                  });
+                  console.log("got product id   "+this.state.productid);
+          })
+          .catch((error) => {
+              console.log(error);
+              console.log("erooooooooooooooor");
+              
+          });
+     }
     render(){
-        const { name, email, state} = this.state
+        const { name, email, state,previewVisible, previewImage, fileList} = this.state;
+        const uploadButton = (
+            <div>
+              <Icon type="plus" />
+              <div className="ant-upload-text">Upload</div>
+            </div>
+          );
         return(
             <div>
                 <Header1/>
@@ -233,9 +292,26 @@ export default class Addpform extends React.Component{
             <Form.Input label='Sell Price' placeholder='Cost Price(leave blank if not available for selling)' name='name' value={name} onChange={this.handleChange} />
         </Form.Group>
         <Form.TextArea label='Description' placeholder="write something about product(it's condition) , years of use, what this product do etc"/>
-            <Form.Button content='Submit' />
-       
+        <b>Upload images</b>
+        <br/>
+            <Upload
+          action= {'http://localhost:8080/upload'}
+          listType="picture-card"
+          fileList={fileList}
+          accept="image/*"
+          multiple={true}
+          onPreview={this.handlePreview}
+          onChange={this.handleChangeImage}
+          className='upload-list-inline'
+          >
+          {fileList.length >= 5 ? null : uploadButton}
+        </Upload>
+        <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
+          <img alt="example" style={{ width: '100%' }} src={previewImage} />
+        </Modal>
+        <Form.Button content='Submit' />
         </Form>
+
                 </Grid.Column>
                     <Grid.Column width={1}/>
                     </Grid>

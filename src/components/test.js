@@ -44,7 +44,7 @@ var User = mongoose.model('User' , UserSchema)
     app.post('/',(req, res) => {
 
         var data = req.body;
-       
+       console.log(req.files);
        
        var query =  User.findOne({email:req.body.email}, function(err, user){
            if(err) throw err;

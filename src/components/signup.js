@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown , Select, Dimmer, Icon} from 'semantic-ui-react';
 import Header1 from './header';
 import {geolocated} from 'react-geolocated';
+import { Redirect } from 'react-router';
 const cities =[
 
 ]
@@ -206,7 +207,8 @@ class Signup extends Component {
     address1:'',
     address2:'', 
     verificationcode:Math.floor(Math.random() * (10000 - 1000)) + 1000,
-    show:false
+    show:false,
+    redirection:true
 }
 handleChange=(e,{name,value})=>{
   this.setState({[name]:value});
@@ -325,7 +327,8 @@ handleSubmitCode=e=>{
                       active:true,
                       errorHeader:'You are a verified user now!',
                       errorMessage:'Congratulations , You are a verified user now', 
-                      show:false
+                      show:false,
+                      redirection:true
                   })
               }
           })
@@ -346,8 +349,12 @@ render(){
   var mystyle={
     backgroundColor:'#ebebe0'
   }
+  if (this.state.redirection) {
+    return <Redirect to=''/>;
+  }
 return (
     <div>
+      
   <Header1/>  
   <div style={mystyle}>
 
