@@ -1,15 +1,49 @@
 
 import React, { Component } from 'react'
-import { Button, Icon, Header, Grid, Card } from 'semantic-ui-react'
+import { Button, Icon, Header, Grid, Card,Dimmer, Loader } from 'semantic-ui-react'
 import Header1 from './header'
 import Pcard from './Pcard'
 export default class Electronics extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state={
+            active:true,
+            data:[]
+        }
     }
+    componentDidMount() {
+        console.log("componentdid mount");
+      fetch('http://localhost:8080/fetch/category?category=electronics',{
+        method:'GET',
+        headers:{
+            'Accept':'application/json',
+            'Content-Type':'application/json',
+        }
+    }).then((response)=>response.json())
+        .then((responseJson)=>{
+            if(!responseJson.empty){  
+              this.setState({
+                    active:false,
+                    data:responseJson.productList
+                })
+            }
+        })
+        .catch((error)=>{
+            console.log(error);
+            console.log("erooooooooooooooor");
+            this.setState({
+              active:true,
+          }) 
+        });
+    }
+
     render() {
+        const {active}=this.state;
         return (
             <div>
+                <Dimmer active={active}>
+      <Loader />
+             </Dimmer>
                 <Header1 />
                 <br /><br /><br /><br />
                 <center>
@@ -28,24 +62,10 @@ export default class Electronics extends React.Component {
                 />
                 <Grid padded>
                     <Grid.Row columns={5} stackable>
-                        <Grid.Column>
-                        <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500"/>
+                                            <Grid.Column>
+                        <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" type="phone" buyprice="40000" rentprice="500"/>
                         </Grid.Column>
-                        <Grid.Column>
-                        <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500"/>
-                        </Grid.Column>
-                        <Grid.Column>
-                        <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500"/>
-                        </Grid.Column>
-                        <Grid.Column>
-                        <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500"/>
-                        </Grid.Column>
-                        <Grid.Column>
-                        <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500"/>
-                        </Grid.Column>
-                        <Grid.Column>
-                        <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500"/>
-                        </Grid.Column>
+                        {this.state.data.map((product)=><Grid.Column key={product.productId}><Pcard imgurl={"http://localhost:8080/images/"+product.img1} productname={product.productName} type={product.type} buyprice={product.price} rentprice={product.rent}/></Grid.Column>)}
                     </Grid.Row>
                 </Grid>
                 

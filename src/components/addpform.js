@@ -9,8 +9,8 @@ const States = [
 
   {
     "key": "AN",
-    "text": "Andaman and Nicobar Islands",
-    "value": "Andaman and Nicobar Islands"
+    "text": "electronics",
+    "value": "electronics"
   },
   {
     "key": "AP",
