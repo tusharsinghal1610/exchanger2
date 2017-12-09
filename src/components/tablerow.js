@@ -6,7 +6,12 @@ const options = [
     { key: 3, text: 'Choice 3', value: 3 },
   ]
 export default class Tabler extends React.Component{
-    state = {}
+  constructor(props){
+    super(props);
+    this.state={
+      value:1
+    }
+  }
     
       handleChange = (e, { value }) => this.setState({ value })
     render(){
@@ -14,9 +19,9 @@ export default class Tabler extends React.Component{
         return(
                 
                 <Table.Row>
-                <Table.Cell>John</Table.Cell>
-                <Table.Cell>Approved</Table.Cell>
-                <Table.Cell>None</Table.Cell>
+                <Table.Cell>{this.props.name}</Table.Cell>
+                <Table.Cell>{this.props.buyPrice}</Table.Cell>
+                <Table.Cell>{this.props.rentPrice}</Table.Cell>
                 <Table.Cell>   <Dropdown compact onChange={this.handleChange} options={options} placeholder='Choose an option' selection value={value}/> </Table.Cell>
               </Table.Row>
                 

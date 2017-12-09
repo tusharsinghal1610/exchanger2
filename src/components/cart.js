@@ -1,15 +1,49 @@
 import React, { Component } from 'react'
-import { Table, Grid, Header,Button, Icon } from 'semantic-ui-react'
+import { Table, Grid, Header,Button, Icon,Dimmer,Loader } from 'semantic-ui-react'
 import Header1 from './header'
 import Tabler from './tablerow'
 export default class Cart extends React.Component{
     constructor(props){
         super(props);
+        this.state={
+            data:[{productId:10000,productName:"tusharrrr",price:"111122",rent:"1234",choice:"buy"}],
+            total:'',
+            active:false
+        }
+    }
+    componentDidMount() {
+        console.log("componentdid mount");
+        fetch('http://localhost:8080/cart/getcart?userId='+sessionStorage.getItem('userId'),{
+          method:'GET',
+          headers:{
+              'Accept':'application/json',
+              'Content-Type':'application/json',
+          }
+      }).then((response)=>response.json())
+          .then((responseJson)=>{
+              if(!responseJson.empty){  
+                this.setState({
+                      active:false,
+                      data:responseJson.productDetails,
+                      total:responseJson.totalPrice
+                  })
+              }
+          })
+          .catch((error)=>{
+              console.log(error);
+              console.log("erooooooooooooooor");
+              this.setState({
+                active:false,
+            }) 
+          });
     }
     render(){
-       
+       const {active}=this.state
         return(
             <div>
+                <Dimmer active={active}>
+      <Loader />
+             </Dimmer>
                 <Header1/>
                 <br/><br/><br/><br/>
                 <Grid>
@@ -33,14 +67,14 @@ export default class Cart extends React.Component{
           </Table.Row>
             </Table.Header>
             <Table.Body>
-            <Tabler/><Tabler/><Tabler/><Tabler/>
+            {this.state.data.map((product)=><Tabler key={product.productId} name={product.productName} buyPrice={product.price} rentPrice={product.rent} choice={product.choice} />)}
     </Table.Body>
 
             </Table>
             <Header
                     as='h2'
                     icon='money'
-                    content={'Your Total :'+'rs 40000'}
+                    content={'Your Total :Rs'+this.state.total}
                 />
             </Grid.Column>
             <Grid.Column width={2}/>
