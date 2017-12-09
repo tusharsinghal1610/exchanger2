@@ -11,6 +11,9 @@ export default class Electronics extends React.Component {
             data:[]
         }
     }
+    handleproductchange=()=>{
+        console.log("yoooooooooooooohooooooooooooooooooohohohoho");
+    }
     componentDidMount() {
         console.log("componentdid mount");
       fetch('http://localhost:8080/fetch/category?category=electronics',{
@@ -65,7 +68,7 @@ export default class Electronics extends React.Component {
                                             <Grid.Column>
                         <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" type="phone" buyprice="40000" rentprice="500"/>
                         </Grid.Column>
-                        {this.state.data.map((product)=><Grid.Column key={product.productId}><Pcard imgurl={"http://localhost:8080/images/"+product.img1} productname={product.productName} type={product.type} buyprice={product.price} rentprice={product.rent}/></Grid.Column>)}
+                        {this.state.data.map((product)=><Grid.Column key={product.productId}><Pcard imgurl={"http://localhost:8080/images/"+product.img1} productname={product.productName} type={product.type} buyprice={product.price} rentprice={product.rent} productId={product.productId} onChange={this.handleproductchange}/></Grid.Column>)}
                     </Grid.Row>
                 </Grid>
                 
