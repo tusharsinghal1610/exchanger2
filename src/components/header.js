@@ -40,9 +40,9 @@ var isLoggedin=()=>{
         return true;
     }
     else if(localStorage.getItem('userId')){
-            sessionStorage.setItem('name',localStorage.getItem('name'));
+            sessionStorage.setItem('firstname',localStorage.getItem('firstname'));
             sessionStorage.setItem('userId',localStorage.getItem('userId'));
-            sessionStorage.setItem('emailId',localStorage.getItem('email'));                
+            sessionStorage.setItem('email',localStorage.getItem('email'));                
             return true;
     }else{
         return false;

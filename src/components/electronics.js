@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Button, Icon, Header, Grid, Card,Dimmer, Loader } from 'semantic-ui-react'
+import { Button, Icon, Header, Grid, Card,Dimmer, Loader } from 'semantic-ui-react';
 import Header1 from './header'
 import Pcard from './Pcard'
 export default class Electronics extends React.Component {

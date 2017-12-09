@@ -7,7 +7,7 @@ export default class login extends Component {
     state = {
         email: '',
         password: '',
-        redirection:true
+        redirection:false
     }
     handleChange = (e, { name, value }) => {
         this.setState({ [name]: value });

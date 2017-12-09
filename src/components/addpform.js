@@ -205,7 +205,8 @@ export default class Addpform extends React.Component {
     fileURL: [],
     fileList: [],
     productId: "",
-    active:false
+    active:false,
+    show:false
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -283,7 +284,8 @@ handleClose = () => this.setState({ active: false })
                   this.setState({
                         active:true,
                         errorHeader:'Your Product is uploaded!',
-                        errorMessage:<div>Thanks for being a part here</div>
+                        errorMessage:<div>Thanks for being a part here</div>,
+                        show:true
                     })
                 
             })
@@ -299,7 +301,7 @@ handleClose = () => this.setState({ active: false })
   }
   }
   render() {
-    const { productName,category,type,rent,price,description, previewVisible, previewImage, fileList,active,errorHeader,errorMessage } = this.state;
+    const { productName,category,type,rent,price,description, previewVisible, previewImage, fileList,active,errorHeader,errorMessage,show } = this.state;
     const uploadButton = (
       <div>
         <Icon type="plus" />
@@ -376,7 +378,8 @@ handleClose = () => this.setState({ active: false })
         >
           <Header as='h2' icon inverted>
             {errorHeader}!
-            <Header.Subheader>{errorMessage}</Header.Subheader>
+            <Header.Subheader>{errorMessage}{(show)?<a href='http://localhost:3000'><Button primary>Proceed to Home page</Button></a>:<div></div>}</Header.Subheader>
+
           </Header>
 
 
