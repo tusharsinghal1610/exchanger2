@@ -60,6 +60,7 @@ export default class Cart extends React.Component{
                 <Table.HeaderCell rowspan='2'>Product Name</Table.HeaderCell>
                 <Table.HeaderCell colspan='2'>Price</Table.HeaderCell>
                 <Table.HeaderCell rowspan='2'>Your Choice</Table.HeaderCell>
+                <Table.HeaderCell rowspan='2'>Delete</Table.HeaderCell>
               </Table.Row>
               <Table.Row>
             <Table.HeaderCell>Buy</Table.HeaderCell>
@@ -67,14 +68,14 @@ export default class Cart extends React.Component{
           </Table.Row>
             </Table.Header>
             <Table.Body>
-            {this.state.data.map((product)=><Tabler key={product.productId} name={product.productName} buyPrice={product.price} rentPrice={product.rent} choice={product.choice} />)}
+            {this.state.data.map((product)=><Tabler key={product.productId} productId={product.productId} name={product.productName} buyPrice={product.price} rentPrice={product.rent} choice={product.choice} />)}
     </Table.Body>
 
             </Table>
             <Header
                     as='h2'
                     icon='money'
-                    content={'Your Total :Rs'+this.state.total}
+                    content={'Your Total :Rs '+this.state.total}
                 />
             </Grid.Column>
             <Grid.Column width={2}/>

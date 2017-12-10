@@ -199,12 +199,13 @@ export default class Addpform extends React.Component {
     category:'',
     price:'',
     rent:'',
-    descriptio:'',
+    description:'',
     previewVisible: false,
     previewImage: '',
     fileURL: [],
     fileList: [],
     productId: "",
+    keywords:"",
     active:false,
     show:false
   }
@@ -255,10 +256,17 @@ handleClose = () => this.setState({ active: false })
       });
   }
   handleFormSubmit = () => {
-    if(this.state.productName.length<1||this.state.category.length<1||this.state.type.length<1||this.state.rent.length<1||this.state.price.length<1||this.state.description.length<1){
+    if(this.state.productName.length<1||this.state.category.length<1||this.state.type.length<1||this.state.description.length<1){
           this.setState({errorHeader:'Field is Empty'})
           this.setState({errorMessage:'All Fields are Required!'})
           this.setState({active:true});
+      }
+      else if(this.state.price<1 && this.state.price<1){
+        this.setState({
+          errorHeader:"Field is Empty",
+          errorMessage:"enter atleast one price, rent price or selling price",
+          active:true
+        })
       }
       else{ 
         fetch('http://localhost:8080/upload/data',{
@@ -275,7 +283,9 @@ handleClose = () => this.setState({ active: false })
                     "price":this.state.price,
                     "description":this.state.description,
                     "productId":this.state.productId,
-                    "userid":sessionStorage.getItem("userId")
+                    "userid":sessionStorage.getItem("userId"),
+                    "keywords":this.state.keywords,
+                    "email":sessionStorage.getItem('email')
             })
         }).then((response)=>response.json())
             .then((responseJson)=>{
@@ -301,7 +311,7 @@ handleClose = () => this.setState({ active: false })
   }
   }
   render() {
-    const { productName,category,type,rent,price,description, previewVisible, previewImage, fileList,active,errorHeader,errorMessage,show } = this.state;
+    const { productName,category,type,rent,price,description,keywords, previewVisible, previewImage, fileList,active,errorHeader,errorMessage,show } = this.state;
     const uploadButton = (
       <div>
         <Icon type="plus" />
@@ -344,6 +354,7 @@ handleClose = () => this.setState({ active: false })
 
                 <Form.Input label='Sell Price' placeholder='Cost Price(leave blank if not available for selling)' name='price' value={price} onChange={this.handleChange} />
               </Form.Group>
+              <Form.TextArea label='Keywords' name='keywords' value={keywords} onChange={this.handleChange} placeholder="write Keywords here that will help search your product better,(don't write words like is ,in ,for, it)for eg :write like 2gb ram white" />
               <Form.TextArea label='Description' name='description' value={description} onChange={this.handleChange} placeholder="write something about product(it's condition) , years of use, what this product do etc" />
               <b>Upload images</b>
               <br />
