@@ -11,6 +11,7 @@ export default class Pcard extends React.Component{
   }
   handleCartItClick=()=>{
     console.log(this.props.productId+"wooooooooooooo");
+    sessionStorage.setItem(this.props.productId,true);
     fetch('http://localhost:8080/cart?productId='+ this.props.productId+'&userId='+ sessionStorage.getItem('userId') +'&productName='+this.props.productname+'&price='+this.props.buyprice+'&rent='+this.props.rentprice, {
       method: 'GET',
       headers: {
@@ -36,7 +37,33 @@ export default class Pcard extends React.Component{
           })
       });
 }
-  
+handleDecartItClick=()=>{
+  sessionStorage.removeItem(this.props.productId,false);
+  fetch('http://localhost:8080/cart/delete?userId=' + sessionStorage.getItem('userId') + '&productId=' + this.props.productId, {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+}).then((response) => response.json())
+    .then((responseJson) => {
+        if (responseJson.success) {
+            this.setState({
+              isCarted:false
+            });
+            console.log("PRODUCT deleted from CART");    
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+        console.log("erooooooooooooooor");
+        this.setState({
+            active: true,
+            errorHeader: 'error!',
+            errorMessage: 'an unexpected error occured'
+        })
+    });
+} 
   render(){
     return(
     <Card>
@@ -63,19 +90,21 @@ export default class Pcard extends React.Component{
     <Card.Content extra>
     <Grid columns='equal'>
     <Grid.Column>
-      {(this.state.isCarted)?<a onClick={this.handleCartItClick}>
-        <Icon name='cart' />
+      <center>
+      {(sessionStorage.getItem(this.props.productId))?<a onClick={this.handleDecartItClick}>
+        <Icon name='cart'/>
         Decart it
   </a>:<a onClick={this.handleCartItClick}>
         <Icon name='cart' />
         Cart it
-  </a>}
+  </a>}</center>
     </Grid.Column>
     <Grid.Column>
+      <center>
       <a>
         <Icon name='shopping bag' />
         Buy/rent Now
-  </a>
+  </a></center>
     </Grid.Column>
   </Grid>
 

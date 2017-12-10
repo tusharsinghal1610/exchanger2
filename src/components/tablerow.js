@@ -15,6 +15,7 @@ export default class Tabler extends React.Component {
         }
     }
     handleRemove = () => {
+        localStorage.removeItem(this.props.productId);
         fetch('http://localhost:8080/cart/delete?userId=' + sessionStorage.getItem('userId') + '&productId=' + this.props.productId, {
             method: 'GET',
             headers: {
@@ -40,7 +41,7 @@ export default class Tabler extends React.Component {
         if (value == 1) {
             if (this.props.buyPrice) {
                 this.setState({ value: value });
-                fetch('http://localhost:8080/cart/update?userId=' + sessionStorage.getItem('userId') + '&productId=' + this.props.productId + '&choice=' + value, {
+                fetch('http://localhost:8080/cart/updateChoice?userId=' + sessionStorage.getItem('userId') + '&productId=' + this.props.productId + '&choice=' + value, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -66,7 +67,7 @@ export default class Tabler extends React.Component {
         else {
             if (this.props.rentPrice) {
                 this.setState({ value: value });
-                fetch('http://localhost:8080/cart/update?userId=' + sessionStorage.getItem('userId') + '&productId=' + this.props.productId + '&choice=' + value, {
+                fetch('http://localhost:8080/cart/updateChoice?userId=' + sessionStorage.getItem('userId') + '&productId=' + this.props.productId + '&choice=' + value, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',

@@ -7,6 +7,16 @@ import Postad from './postad'
 export default class App extends React.Component {
     constructor(props) {
         super(props)
+        this.state={
+            kyp:"hello"
+        }
+    }
+    handleclick1=()=>{
+        sessionStorage.setItem("product.hello","how r u");
+        console.log(sessionStorage.getItem("product."+this.state.kyp));
+        sessionStorage.removeItem("product");
+        
+        console.log(sessionStorage.getItem("product."+this.state.kyp));
     }
     render() {
         return (
@@ -15,8 +25,8 @@ export default class App extends React.Component {
                 <br /><br /><br /><br />
                 <center>
                     <Button.Group>
-                        <Button basic color='grey'><a href="electronics"><b><Icon name='mobile' /> Electronics</b></a></Button>
-                        <Button basic color='grey'><b><Icon name='bed' /> Furnitures</b></Button>
+                    <a href="electronics"><Button basic color='grey'><b><Icon name='mobile' /> Electronics</b></Button></a>
+                        <Button basic color='grey' onClick={this.handleclick1}><b><Icon name='bed' /> Furnitures</b></Button>
                         <Button basic color='grey'><b><Icon name='car' /> Cars</b></Button>
                         <Button basic color='grey'><b><Icon name='like' /> Pets</b></Button>
                         <Button basic color='grey'><b><Icon name='building' /> Properties</b></Button>

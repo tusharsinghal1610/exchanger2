@@ -28,7 +28,9 @@ export default class Electronics extends React.Component {
               this.setState({
                     active:false,
                     data:responseJson.productList
-                })
+                });
+
+
             }
         })
         .catch((error)=>{
@@ -38,6 +40,29 @@ export default class Electronics extends React.Component {
               active:true,
           }) 
         });
+
+
+        fetch('http://localhost:8080/cart/getCartId?userId='+sessionStorage.getItem("userId"),{
+            method:'GET',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json',
+            }
+        }).then((response)=>response.json())
+            .then((responseJson)=>{
+                sessionStorage.clear();
+                sessionStorage.setItem('userId',localStorage.getItem('userId'));
+                sessionStorage.setItem('firstname',localStorage.getItem('firstname'));
+                sessionStorage.setItem('email',localStorage.getItem('email'));
+                responseJson.products.map((product)=>sessionStorage.setItem(product,true));
+            })
+            .catch((error)=>{
+                console.log(error);
+                console.log("erooooooooooooooor");
+                this.setState({
+                  active:true,
+              }) 
+            });
     }
 
     render() {

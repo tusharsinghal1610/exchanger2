@@ -261,7 +261,7 @@ handleClose = () => this.setState({ active: false })
           this.setState({errorMessage:'All Fields are Required!'})
           this.setState({active:true});
       }
-      else if(this.state.price<1 && this.state.price<1){
+      else if(this.state.rent<1 && this.state.price<1){
         this.setState({
           errorHeader:"Field is Empty",
           errorMessage:"enter atleast one price, rent price or selling price",

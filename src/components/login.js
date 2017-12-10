@@ -12,7 +12,7 @@ export default class login extends Component {
     handleChange = (e, { name, value }) => {
         this.setState({ [name]: value });
     }
-    handleClose = () => this.setState({ active: false })
+    handleClose = () => this.setState({ active: false });
     handleSubmit = e => {
         if (this.state.email.length < 1 || this.state.password.length < 1) {
             this.setState({ errorHeader: 'Field is Empty' })
@@ -46,6 +46,7 @@ export default class login extends Component {
                         localStorage.setItem('email',this.state.email);
                         localStorage.setItem('firstname',responseJson.firstname);
                         localStorage.setItem('userId',responseJson.userid);
+                        responseJson.products.map((product)=>localStorage.setItem(product,true));
                         console.log("logged in");
 
                         this.setState({
