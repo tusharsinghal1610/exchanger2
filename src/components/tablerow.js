@@ -117,7 +117,7 @@ export default class Tabler extends React.Component {
                 <Table.Cell>{this.props.name}</Table.Cell>
                 <Table.Cell>{this.props.buyPrice}</Table.Cell>
                 <Table.Cell>{this.props.rentPrice}</Table.Cell>
-                <Table.Cell>   <Dropdown compact onChange={this.handleChange} options={options} placeholder='Choose an option' selection value={value} /> </Table.Cell>
+                <Table.Cell>   {(value)?<Dropdown compact onChange={this.handleChange} options={options} placeholder='Choose an option' selection value={value} />:"OUT OF STOCK" }</Table.Cell>
                 <Table.Cell> <Button
                     onClick={this.handleRemove}
                     color='red'

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Table, Grid, Header,Button, Icon,Dimmer,Loader } from 'semantic-ui-react'
 import Header1 from './header'
 import Tabler from './tablerow'
