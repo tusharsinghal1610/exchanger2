@@ -110,7 +110,7 @@ export default class Header1 extends Component {
           
         <Menu.Item name="Logo" href="/">
           <Header as='h6'>
-          <img src='Assets/logo.png' />EXCHANGER</Header>
+          <img src='/Assets/logo.png' />EXCHANGER</Header>
         </Menu.Item>
         <Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/>
         <Menu.Item name="searchbar" position='center'>

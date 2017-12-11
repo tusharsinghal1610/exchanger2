@@ -10,6 +10,7 @@ import Notifications from './components/notifications';
 import Addp from './components/addproduct';
 import Addpform from './components/addpform';
 import EditProduct from './components/editproduct';
+import InstantBuy from './components/instantbuy';
 import geolocation from './components/geolocation';
 ReactDOM.render(
     <BrowserRouter>
@@ -23,6 +24,7 @@ ReactDOM.render(
           <Route exact path="/addproduct" component ={Addp} />
           <Route exact path="/addpform" component ={Addpform} />
           <Route path='/editproduct/:productId?' component={EditProduct} />
+          <Route path='/instantbuy/:productId?' component={InstantBuy} />
           <Route exact path="/geolocation" component ={geolocation} />
     </Switch>
     </BrowserRouter>,

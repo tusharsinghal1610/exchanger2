@@ -101,7 +101,7 @@ handleDecartItClick=()=>{
     </Grid.Column>
     <Grid.Column>
       <center>
-      <a>
+      <a href={"http://localhost:3000/instantbuy/"+this.props.productId}>
         <Icon name='shopping bag' />
         Buy/rent Now
   </a></center>

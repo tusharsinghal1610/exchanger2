@@ -82,7 +82,7 @@ export default class Cart extends React.Component{
             </Grid>
             <br/>
                 <center>
-                    <a Href="/"><Button secondary><Icon name='chevron left'/><Icon name='chevron left'/>Continue Shopping</Button></a>
+                    <a href="/"><Button secondary><Icon name='chevron left'/><Icon name='chevron left'/>Continue Shopping</Button></a>
                     <Button primary>Proceed to checkout<Icon name='chevron right'/><Icon name='chevron right'/></Button>
                 </center>
             </div>

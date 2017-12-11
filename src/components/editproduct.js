@@ -304,7 +304,7 @@ handleClose = () => this.setState({ active: false })
                   console.log("product uploaded");    
                   this.setState({
                         active:true,
-                        errorHeader:'Your Product is uploaded!',
+                        errorHeader:'Your Product is updated!',
                         errorMessage:<div>Thanks for being a part here</div>,
                         show:true
                     })
@@ -339,7 +339,7 @@ handleClose = () => this.setState({ active: false })
             <Header
               as='h2'
               icon='add circle'
-              content='Add Your Product'
+              content='Edit Your Product'
             />
             <br />
             <Form size='large' onSubmit={this.handleFormSubmit}>
