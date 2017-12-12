@@ -7,12 +7,12 @@ export default class InstantBuy extends React.Component {
         super(props);
         this.state = {
             total: '',
-            active: false
+            active: true
         }
     }
     componentDidMount() {
         console.log("componentdid mount");
-        fetch('http://localhost:8080/cart/getcart?productId=' + this.props.match.params.productId, {
+        fetch('http://localhost:8080/product/buyNow?productId=' + this.props.match.params.productId, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -22,6 +22,7 @@ export default class InstantBuy extends React.Component {
             .then((responseJson) => {
                 if (!responseJson.empty) {
                     this.setState({
+                        active:false,
                         productName: responseJson.productName,
                         price: responseJson.price,
                         rent: responseJson.rent,
@@ -36,7 +37,7 @@ export default class InstantBuy extends React.Component {
                 console.log(error);
                 console.log("erooooooooooooooor");
                 this.setState({
-                    active: false,
+                    active: true,
                 })
             });
     }
@@ -63,19 +64,19 @@ export default class InstantBuy extends React.Component {
                             </Grid.Column>
                             <Grid.Column width={1} />
                             <Grid.Column width={5}>
-                                <b>Product Name:</b><br/>
-                                <b>Category:</b><br/>
-                                <b>Type:</b><br/>
-                                <b>Buy Price:</b><br/>
-                                <b>Rent Price:</b><br/>
+                                <b>Product Name:</b><br/><br/>
+                                <b>Category:</b><br/><br/>
+                                <b>Type:</b><br/><br/>
+                                <b>Buy Price:</b><br/><br/>
+                                <b>Rent Price:</b><br/><br/>
                                 <b>Description:</b>
                             </Grid.Column>
                             <Grid.Column width={5}>
-                                <b>{productName}</b><br/>
-                                <b>{category}</b><br/>
-                                <b>{type}</b><br/>
-                                <b>{(price)?"Rs. "+price:"Not available"}</b><br/>
-                                <b>{(rent)?"Rs. "+rent:"Not available"}</b><br/>
+                                <b>{productName}</b><br/><br/>
+                                <b>{category}</b><br/><br/>
+                                <b>{type}</b><br/><br/>
+                                <b>{(price)?"Rs. "+price:"Not available"}</b><br/><br/>
+                                <b>{(rent)?"Rs. "+rent:"Not available"}</b><br/><br/>
                                 <b>{description}</b>
                             </Grid.Column>
                         </Grid>

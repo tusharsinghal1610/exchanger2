@@ -232,7 +232,7 @@ handleClose = () => this.setState({ active: false })
   componentDidMount() {
     console.log('Component Did MOUNT!');
     console.log('the product id is '+this.props.match.params.productId);
-    fetch('http://localhost:8080/upload/edit?userId='+sessionStorage.getItem("userId")+'&productId='+this.props.match.params.productId, {
+    fetch('http://localhost:8080/product/edit?userId='+sessionStorage.getItem("userId")+'&productId='+this.props.match.params.productId, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -280,7 +280,7 @@ handleClose = () => this.setState({ active: false })
         })
       }
       else{ 
-        fetch('http://localhost:8080/upload/data',{
+        fetch('http://localhost:8080/product/data',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
@@ -370,7 +370,7 @@ handleClose = () => this.setState({ active: false })
               <b>Upload images</b>
               <br />
               <Upload
-                action={'http://localhost:8080/upload'}
+                action={'http://localhost:8080/product/upload'}
                 listType="picture-card"
                 data={{
                   productId: this.state.productId

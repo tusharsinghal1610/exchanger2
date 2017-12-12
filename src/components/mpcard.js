@@ -11,7 +11,7 @@ export default class Mpcard extends React.Component{
   }
   }
   handleRemove=()=>{
-    fetch('http://localhost:8080/upload/remove?userId='+sessionStorage.getItem("userId")+'&productId='+this.props.productId, {
+    fetch('http://localhost:8080/product/remove?userId='+sessionStorage.getItem("userId")+'&productId='+this.props.productId, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

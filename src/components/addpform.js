@@ -231,7 +231,7 @@ handleClose = () => this.setState({ active: false })
   }
   componentWillMount() {
     console.log('Component WILL MOUNT!');
-    fetch('http://localhost:8080/upload/getproductid', {
+    fetch('http://localhost:8080/product/getproductid', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -269,7 +269,7 @@ handleClose = () => this.setState({ active: false })
         })
       }
       else{ 
-        fetch('http://localhost:8080/upload/data',{
+        fetch('http://localhost:8080/product/data',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
@@ -359,7 +359,7 @@ handleClose = () => this.setState({ active: false })
               <b>Upload images</b>
               <br />
               <Upload
-                action={'http://localhost:8080/upload'}
+                action={'http://localhost:8080/product/upload'}
                 listType="picture-card"
                 data={{
                   productId: this.state.productId

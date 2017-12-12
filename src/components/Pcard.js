@@ -67,7 +67,7 @@ handleDecartItClick=()=>{
   render(){
     return(
     <Card>
-    <Image src={this.props.imgurl} height='270'/>
+    <a href={"http://localhost:3000/productdescription/"+this.props.productId}><Image src={this.props.imgurl} height='270'/>
     <Card.Content>
       <Card.Header>{this.props.productname}</Card.Header>
       <Card.Meta>{this.props.type}</Card.Meta>
@@ -86,7 +86,7 @@ handleDecartItClick=()=>{
         </Grid.Column>
       </Grid>
       </Card.Description>
-    </Card.Content>
+    </Card.Content></a>
     <Card.Content extra>
     <Grid columns='equal'>
     <Grid.Column>
