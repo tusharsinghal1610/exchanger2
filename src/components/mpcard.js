@@ -3,6 +3,8 @@ import { Card, Icon, Grid,Image } from 'semantic-ui-react'
 
 import { Redirect } from 'react-router';
 
+import {Link } from 'react-router-dom';
+
 export default class Mpcard extends React.Component{
   constructor(props){
   super(props);
@@ -59,10 +61,10 @@ export default class Mpcard extends React.Component{
     <Grid columns='equal'>
     <Grid.Column>
       <center>
-      <a href={"editproduct/"+this.props.productId}>
+      <Link to={"editproduct/"+this.props.productId}>
         <Icon name='edit'/>
         Edit it
-  </a></center>
+  </Link></center>
     </Grid.Column>
     <Grid.Column>
       <center>

@@ -2,7 +2,9 @@
 import React, { Component } from 'react'
 import { Menu, Segment, Header,Button,Icon,Search,Grid } from 'semantic-ui-react'
 import _ from 'lodash'
-import Drop from './greeting'
+import Drop from './greeting';
+
+import {Link } from 'react-router-dom';
 const source=[
   {
     "title": "Lakin Group",
@@ -85,13 +87,13 @@ export default class Header1 extends Component {
     let right=null;
     if(loggedin){
          right= <Menu.Menu position='right'>
-         <Menu.Item name="cart" href = "#">
-        <a href="cart"><Icon name="cart" color="teal"/>
-        Cart</a>
+         <Menu.Item name="cart">
+        <Link to="cart"><Icon name="cart" color="teal"/>
+        Cart</Link>
         </Menu.Item>
-        <Menu.Item name="Notification" href = "#">
-        <a href="notifications"><Icon name="bell" color="teal"/>
-        Notification</a>
+        <Menu.Item name="Notification">
+        <Link to="notifications"><Icon name="bell" color="teal"/>
+        Notification</Link>
         </Menu.Item>
         <Menu.Item><Drop name={sessionStorage.getItem("firstname")}/></Menu.Item>
           </Menu.Menu>;
@@ -99,8 +101,8 @@ export default class Header1 extends Component {
     else{
         right=<Menu.Menu position='right'>
         
-            <a href="/login" className='styleloginsignup'><Button primary compact>log-in</Button></a>
-            <a href="/signup" className='styleloginsignup'><Button primary compact>signup</Button></a>
+            <Link to="/login" className='styleloginsignup'><Button primary compact>log-in</Button></Link>
+            <Link to="/signup" className='styleloginsignup'><Button primary compact>signup</Button></Link>
        
          </Menu.Menu>;
     }
