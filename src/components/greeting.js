@@ -23,8 +23,8 @@ export default class Drop extends React.Component{
     }
   render(){
     const options = [
-      { key: 1, text: 'profile settings', value: 1 },
-      { key: 2, text: <Link to='addproduct'>My Products</Link>, value: 2 },
+      { key: 1, text: <Link to='/profilesettings'>Profile Settings</Link>, value: 1 },
+      { key: 2, text: <Link to='/addproduct'>My Products</Link>, value: 2 },
       { key: 3, text: 'History', value: 3 },
       { key: 4, text: <div onClick={this.handleLogoutClick}>Log Out</div>, value: 4 }
       

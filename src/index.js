@@ -12,6 +12,7 @@ import Addpform from './components/addpform';
 import EditProduct from './components/editproduct';
 import InstantBuy from './components/instantbuy';
 import Productdes from './components/productdescription';
+import ProfileSettings from './components/profileSettings';
 import geolocation from './components/geolocation';
 ReactDOM.render(
     <BrowserRouter>
@@ -24,6 +25,7 @@ ReactDOM.render(
           <Route exact path="/electronics" component ={Electronics} />
           <Route exact path="/addproduct" component ={Addp} />
           <Route exact path="/addpform" component ={Addpform} />
+          <Route exact path="/profilesettings" component ={ProfileSettings} />
           <Route path='/editproduct/:productId?' component={EditProduct} />
           <Route path='/instantbuy/:productId?' component={InstantBuy} />
           <Route path='/productdescription/:productId?' component={Productdes} />

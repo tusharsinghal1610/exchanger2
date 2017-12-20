@@ -8,7 +8,7 @@ export default class Cart extends React.Component{
         this.state={
             data:[{productId:10000,productName:"tusharrrr",price:"111122",rent:"1234",choice:"buy"}],
             total:'',
-            active:false
+            active:true
         }
     }
     componentDidMount() {
@@ -33,7 +33,7 @@ export default class Cart extends React.Component{
               console.log(error);
               console.log("erooooooooooooooor");
               this.setState({
-                active:false,
+                active:true,
             }) 
           });
     }
