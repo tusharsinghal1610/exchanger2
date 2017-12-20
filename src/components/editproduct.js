@@ -4,7 +4,7 @@ import { Header, Grid, Button, Icon, Form,Dimmer } from 'semantic-ui-react';
 import { Modal } from 'antd';
 import Upload from 'antd/lib/upload';
 import 'antd/lib/upload/style/css';
-import Header1 from './header'
+import Header1 from './header';
 const States = [
 
   {

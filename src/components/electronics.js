@@ -2,7 +2,8 @@
 import React, { Component } from 'react'
 import { Button, Icon, Header, Grid, Card,Dimmer, Loader } from 'semantic-ui-react';
 import Header1 from './header'
-import Pcard from './Pcard'
+import Pcard from './Pcard';
+import Postad from './postad';
 export default class Electronics extends React.Component {
     constructor(props) {
         super(props);
@@ -96,7 +97,7 @@ export default class Electronics extends React.Component {
                         {this.state.data.map((product)=><Grid.Column key={product.productId}><Pcard imgurl={"http://localhost:8080/images/"+product.img1} productname={product.productName} type={product.type} buyprice={product.price} rentprice={product.rent} productId={product.productId} onChange={this.handleproductchange}/></Grid.Column>)}
                     </Grid.Row>
                 </Grid>
-                
+                <Postad/>
             </div>
         )
     }

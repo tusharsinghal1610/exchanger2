@@ -210,7 +210,7 @@ export default class Addpform extends React.Component {
     show:false
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => this.setState({ [name]: value });
   handlePreview = (file) => {
     this.setState({
       previewImage: file.url || file.thumbUrl,
@@ -218,7 +218,7 @@ export default class Addpform extends React.Component {
     });
   }
   
-handleClose = () => this.setState({ active: false })
+handleClose = () => this.setState({ active: false });
   handleChangeImage = ({ fileList }) => {
     var URLs = [];
     for (var item in fileList) {

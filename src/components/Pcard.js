@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Icon, Grid,Image } from 'semantic-ui-react'
 
-import {Link } from 'react-router-dom';
 
 export default class Pcard extends React.Component{
   constructor(props){
@@ -68,7 +67,7 @@ handleDecartItClick=()=>{
   render(){
     return(
     <Card>
-    <Link to={"productdescription/"+this.props.productId}><Image src={this.props.imgurl} height='270'/>
+    <a href={"http://localhost:3000/productdescription/"+this.props.productId}><Image src={this.props.imgurl} height='270'/>
     <Card.Content>
       <Card.Header>{this.props.productname}</Card.Header>
       <Card.Meta>{this.props.type}</Card.Meta>
@@ -87,7 +86,7 @@ handleDecartItClick=()=>{
         </Grid.Column>
       </Grid>
       </Card.Description>
-    </Card.Content></Link>
+    </Card.Content></a>
     <Card.Content extra>
     <Grid columns='equal'>
     <Grid.Column>
@@ -102,10 +101,10 @@ handleDecartItClick=()=>{
     </Grid.Column>
     <Grid.Column>
       <center>
-      <Link to={"instantbuy/"+this.props.productId}>
+      <a href={"http://localhost:3000/instantbuy/"+this.props.productId}>
         <Icon name='shopping bag' />
         Buy/rent Now
-  </Link></center>
+  </a></center>
     </Grid.Column>
   </Grid>
 

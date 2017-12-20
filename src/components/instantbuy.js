@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Table, Grid, Header, Button, Icon, Dimmer, Loader, Image } from 'semantic-ui-react'
 import Header1 from './header'
 import Tabler from './tablerow';
-
-import {Link } from 'react-router-dom';
+import Postad from './postad';
 export default class InstantBuy extends React.Component {
     constructor(props) {
         super(props);
@@ -87,10 +86,11 @@ export default class InstantBuy extends React.Component {
                 </Grid>
                 <br />
                 <center>
-                    <Link to="/"><Button secondary><Icon name='chevron left' /><Icon name='chevron left' />Continue Shopping</Button></Link>
+                    <a href="/"><Button secondary><Icon name='chevron left' /><Icon name='chevron left' />Continue Shopping</Button></a>
                     <Button primary>Take on Rent Now<Icon name='chevron right' /><Icon name='chevron right' /></Button>
                     <Button primary>Buy it Now<Icon name='chevron right' /><Icon name='chevron right' /></Button>
                 </center>
+                <Postad/>
             </div>
 
         )

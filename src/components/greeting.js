@@ -1,8 +1,7 @@
 import React from 'react'
-import { Dropdown ,Button} from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 
-
-import {Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
 
 
 export default class Drop extends React.Component{
@@ -23,8 +22,8 @@ export default class Drop extends React.Component{
     }
   render(){
     const options = [
-      { key: 1, text: <Link to='/profilesettings'>Profile Settings</Link>, value: 1 },
-      { key: 2, text: <Link to='/addproduct'>My Products</Link>, value: 2 },
+      { key: 1, text: <a href='profilesettings'>Profile Settings</a>, value: 1 },
+      { key: 2, text: <a href='addproduct'>My Products</a>, value: 2 },
       { key: 3, text: 'History', value: 3 },
       { key: 4, text: <div onClick={this.handleLogoutClick}>Log Out</div>, value: 4 }
       
@@ -35,10 +34,3 @@ export default class Drop extends React.Component{
   }
 }
 
-const options = [
-  { key: 1, text: 'profile settings', value: 1 },
-  { key: 2, text: <Link to='addproduct'>My Products</Link>, value: 2 },
-  { key: 3, text: 'History', value: 3 },
-  { key: 4, text: <Button onClick={this.handleLogoutClick}>Log Out</Button>, value: 4 }
-  
-]

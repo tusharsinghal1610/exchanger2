@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Header, Grid, Button, Icon,Dimmer,Loader } from 'semantic-ui-react';
 import Header1 from './header';
-import Mpcard from './mpcard'
+import Mpcard from './mpcard';
+import Postad from './postad';
 export default class Addp extends React.Component{
     constructor(props) {
         super(props);
@@ -73,7 +74,7 @@ export default class Addp extends React.Component{
                         </Grid.Column>
                     <Grid.Column width={1}/>
                     </Grid>
-
+                    <Postad/>
                 </div>
         )
     }

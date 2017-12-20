@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Grid, Image, Header, Dimmer, Loader } from 'semantic-ui-react';
 import Slider from 'react-slick';
 import Header1 from './header';
+import Postad from './postad';
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props
@@ -134,6 +135,7 @@ export default class Productdes extends React.Component {
                     </Grid.Column>
                     <Grid.Column width={1} />
                 </Grid>
+                <Postad/>
             </div>
         )
     }

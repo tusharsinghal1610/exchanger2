@@ -4,8 +4,6 @@ import { Button, Icon, Header, Grid, Card } from 'semantic-ui-react';
 import Header1 from './header';
 import Pcard from './Pcard';
 import Postad from './postad';
-
-import {Link } from 'react-router-dom';
 export default class App extends React.Component {
     constructor(props) {
         super(props)
@@ -27,7 +25,7 @@ export default class App extends React.Component {
                 <br /><br /><br /><br />
                 <center>
                     <Button.Group>
-                    <Link to="electronics"><Button basic color='grey'><b><Icon name='mobile' /> Electronics</b></Button></Link>
+                    <a href="electronics"><Button basic color='grey'><b><Icon name='mobile' /> Electronics</b></Button></a>
                         <Button basic color='grey' onClick={this.handleclick1}><b><Icon name='bed' /> Furnitures</b></Button>
                         <Button basic color='grey'><b><Icon name='car' /> Cars</b></Button>
                         <Button basic color='grey'><b><Icon name='like' /> Pets</b></Button>

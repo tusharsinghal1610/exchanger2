@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Table, Grid, Header,Button, Icon,Dimmer,Loader } from 'semantic-ui-react'
 import Header1 from './header'
 import Tabler from './tablerow'
+import Postad from './postad';
 export default class Cart extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            data:[{productId:10000,productName:"tusharrrr",price:"111122",rent:"1234",choice:"buy"}],
+            data:[],
             total:'',
-            active:true
+            active:false
         }
     }
     componentDidMount() {
@@ -33,7 +34,7 @@ export default class Cart extends React.Component{
               console.log(error);
               console.log("erooooooooooooooor");
               this.setState({
-                active:true,
+                active:false,
             }) 
           });
     }
@@ -85,6 +86,7 @@ export default class Cart extends React.Component{
                     <a href="/"><Button secondary><Icon name='chevron left'/><Icon name='chevron left'/>Continue Shopping</Button></a>
                     <Button primary>Proceed to checkout<Icon name='chevron right'/><Icon name='chevron right'/></Button>
                 </center>
+                <Postad/>
             </div>
            
         )

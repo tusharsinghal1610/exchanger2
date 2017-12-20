@@ -1,11 +1,10 @@
 
 import React, { Component } from 'react'
-import { Menu, Segment, Header,Button,Icon,Search,Grid } from 'semantic-ui-react'
+import { Menu, Segment, Header, Button, Icon, Search, Grid } from 'semantic-ui-react'
 import _ from 'lodash'
-import Drop from './greeting';
-
-import {Link } from 'react-router-dom';
-const source=[
+import Drop from './greeting'
+import Pcard from './Pcard'
+const source = [
   {
     "title": "Lakin Group",
     "description": "Virtual mission-critical infrastructure",
@@ -13,7 +12,7 @@ const source=[
     "price": "$86.91"
   },
   {
-    "title": "O'Reilly - Wolff",
+    "title": "hellooooooooo",
     "description": "Triple-buffered discrete website",
     "image": "https://s3.amazonaws.com/uifaces/faces/twitter/coreyginnivan/128.jpg",
     "price": "$59.45"
@@ -26,7 +25,7 @@ const source=[
   },
   {
     "title": "Runte - Rippin",
-    "description": "Virtual scalable local area network",
+    "description": "helloooooooo",
     "image": "https://s3.amazonaws.com/uifaces/faces/twitter/spedwig/128.jpg",
     "price": "$59.90"
   },
@@ -37,24 +36,58 @@ const source=[
     "price": "$67.15"
   }
 ]
-var isLoggedin=()=>{
-    if(sessionStorage.getItem('userId')){
-        return true;
-    }
-    else if(localStorage.getItem('userId')){
-            sessionStorage.setItem('firstname',localStorage.getItem('firstname'));
-            sessionStorage.setItem('userId',localStorage.getItem('userId'));
-            sessionStorage.setItem('email',localStorage.getItem('email'));                
-            return true;
-    }else{
-        return false;
-    }
+var isLoggedin = () => {
+  if (sessionStorage.getItem('userId')) {
+    return true;
+  }
+  else if (localStorage.getItem('userId')) {
+    sessionStorage.setItem('firstname', localStorage.getItem('firstname'));
+    sessionStorage.setItem('userId', localStorage.getItem('userId'));
+    sessionStorage.setItem('email', localStorage.getItem('email'));
+    return true;
+  } else {
+    return false;
+  }
 }
 export default class Header1 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showResults: false,
+      data:[]
+    }
+  }
   componentWillMount() {
     this.resetComponent()
   }
-
+  componentDidMount() {
+    console.log("componentdid mount");
+    if (!sessionStorage.getItem("productListHere")) {
+      
+      fetch('http://localhost:8080/getproducts', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }).then((response) => response.json())
+        .then((responseJson) => {
+          if (!responseJson.empty) {
+            this.setState({
+              data: responseJson.products
+            });
+            sessionStorage.setItem("productlist",responseJson.products);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          console.log("erooooooooooooooor");
+          this.setState({
+            active: false,
+          })
+        });
+    }
+  }
   resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
   handleResultSelect = (e, { result }) => this.setState({ value: result.title })
@@ -66,8 +99,8 @@ export default class Header1 extends Component {
       if (this.state.value.length < 1) return this.resetComponent()
 
       const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-      var isMatch = result => (re.test(result.title))
-      
+      var isMatch = result => (re.test(result.title) || re.test(result.description));
+
 
       this.setState({
         isLoading: false,
@@ -82,40 +115,40 @@ export default class Header1 extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const { activeItem, isLoading, value, results } = this.state
-    const loggedin=isLoggedin();
-    let right=null;
-    if(loggedin){
-         right= <Menu.Menu position='right'>
-         <Menu.Item name="cart">
-        <Link to="cart"><Icon name="cart" color="teal"/>
-        Cart</Link>
+    const { activeItem, isLoading, value, results, showResults } = this.state
+    const loggedin = isLoggedin();
+    let right = null;
+    if (loggedin) {
+      right = <Menu.Menu position='right'>
+        <Menu.Item name="cart" href="/cart">
+          <Icon name="cart" color="teal" />
+          Cart
         </Menu.Item>
-        <Menu.Item name="Notification">
-        <Link to="notifications"><Icon name="bell" color="teal"/>
-        Notification</Link>
+        <Menu.Item name="Notification" href="/notifications">
+          <Icon name="bell" color="teal" />
+          Notification
         </Menu.Item>
-        <Menu.Item><Drop name={sessionStorage.getItem("firstname")}/></Menu.Item>
-          </Menu.Menu>;
+        <Menu.Item><Drop name={sessionStorage.getItem("firstname")} /></Menu.Item>
+      </Menu.Menu>;
     }
-    else{
-        right=<Menu.Menu position='right'>
-        
-            <Link to="/login" className='styleloginsignup'><Button primary compact>log-in</Button></Link>
-            <Link to="/signup" className='styleloginsignup'><Button primary compact>signup</Button></Link>
-       
-         </Menu.Menu>;
+    else {
+      right = <Menu.Menu position='right'>
+
+        <a href="/login" className='styleloginsignup'><Button primary compact>log-in</Button></a>
+        <a href="/signup" className='styleloginsignup'><Button primary compact>signup</Button></a>
+
+      </Menu.Menu>;
     }
     return (
       <div>
         <Menu pointing secondary fixed='top'>
-          
-        <Menu.Item name="Logo" href="/">
-          <Header as='h6'>
-          <img src='/Assets/logo.png' />EXCHANGER</Header>
-        </Menu.Item>
-        <Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/><Menu.Item/>
-        <Menu.Item name="searchbar" position='center'>
+
+          <Menu.Item name="Logo" href="/">
+            <Header as='h6'>
+              <img src='/Assets/logo.png' />EXCHANGER</Header>
+          </Menu.Item>
+          <Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item /><Menu.Item />
+          <Menu.Item name="searchbar" position='center'>
             <Search
               size='small'
               loading={isLoading}
@@ -125,12 +158,40 @@ export default class Header1 extends Component {
               value={value}
               {...this.props}
             />
-            </Menu.Item>
+          </Menu.Item>
           {right}
         </Menu>
+
+        {(showResults) ? <div><br /><br /><br /><Header
+          as='h2'
+          icon='search'
+          content='Search Results'
+        />
+          <Grid padded>
+            <Grid.Row columns={5} stackable>
+              <Grid.Column>
+                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
+              </Grid.Column>
+              <Grid.Column>
+                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
+              </Grid.Column>
+              <Grid.Column>
+                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
+              </Grid.Column>
+              <Grid.Column>
+                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
+              </Grid.Column>
+              <Grid.Column>
+                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
+              </Grid.Column>
+              <Grid.Column>
+                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid></div> : ""}
         <div>
-          
-          </div>
+
+        </div>
       </div>
     )
   }
