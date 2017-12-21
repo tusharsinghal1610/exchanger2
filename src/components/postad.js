@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Button,Icon } from 'semantic-ui-react';
+
+import {Link} from 'react-router-dom';
 export default class Postad extends React.Component{
     render(){
         const mystyle={
@@ -15,12 +17,12 @@ export default class Postad extends React.Component{
             paddingBottom:15
         }
         return(
-            <div><a href="addpform"><Button circular style={mystyle}>
+            <div><Link to="addpform"><Button circular style={mystyle}>
                 
                 <h2 style={mystyle2}><Icon name="write" fitted/><br/>Post ad</h2>
               
                 
-                </Button></a>
+                </Button></Link>
                 </div>
         )
     }

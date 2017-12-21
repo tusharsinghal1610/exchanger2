@@ -4,6 +4,7 @@ import { Button, Icon, Header, Grid, Card,Dimmer, Loader } from 'semantic-ui-rea
 import Header1 from './header'
 import Pcard from './Pcard';
 import Postad from './postad';
+import {Link} from 'react-router-dom';
 export default class Electronics extends React.Component {
     constructor(props) {
         super(props);

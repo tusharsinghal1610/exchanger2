@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import Header1 from './header';
 import Postad from './postad';
 
+import {Link} from 'react-router-dom';
 function SampleNextArrow(props) {
     const { className, style, onClick } = props
     return (
@@ -102,7 +103,7 @@ export default class Productdes extends React.Component {
                         <br />
                         <center>
                             {(sessionStorage.getItem(this.props.match.params.productId)) ?<Button primary> Decart it</Button> : <Button primary> Cart it</Button>}
-                            <a href={"http://localhost:3000/instantbuy/" + this.props.match.params.productId}><Button primary>Rent/Buy</Button></a>
+                            <Link to={"http://localhost:3000/instantbuy/" + this.props.match.params.productId}><Button primary>Rent/Buy</Button></Link>
                             <Button primary>Contact</Button>
                         </center>
                     </Grid.Column>

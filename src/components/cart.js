@@ -3,6 +3,7 @@ import { Table, Grid, Header,Button, Icon,Dimmer,Loader } from 'semantic-ui-reac
 import Header1 from './header'
 import Tabler from './tablerow'
 import Postad from './postad';
+import {Link} from 'react-router-dom';
 export default class Cart extends React.Component{
     constructor(props){
         super(props);
@@ -83,7 +84,7 @@ export default class Cart extends React.Component{
             </Grid>
             <br/>
                 <center>
-                    <a href="/"><Button secondary><Icon name='chevron left'/><Icon name='chevron left'/>Continue Shopping</Button></a>
+                    <Link to="/"><Button secondary><Icon name='chevron left'/><Icon name='chevron left'/>Continue Shopping</Button></Link>
                     <Button primary>Proceed to checkout<Icon name='chevron right'/><Icon name='chevron right'/></Button>
                 </center>
                 <Postad/>

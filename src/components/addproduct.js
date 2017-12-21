@@ -3,6 +3,7 @@ import { Header, Grid, Button, Icon,Dimmer,Loader } from 'semantic-ui-react';
 import Header1 from './header';
 import Mpcard from './mpcard';
 import Postad from './postad';
+import {Link} from 'react-router-dom';
 export default class Addp extends React.Component{
     constructor(props) {
         super(props);
@@ -69,7 +70,7 @@ export default class Addp extends React.Component{
                 </Grid.Row>
             </Grid>
             <center>
-            <Button primary size='large' icon='add square' content='Add Product' />
+            <Link to="/addpform"><Button primary size='large' icon='add square' content='Add Product' /></Link>
             </center>
                         </Grid.Column>
                     <Grid.Column width={1}/>
