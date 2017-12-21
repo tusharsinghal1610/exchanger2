@@ -9,31 +9,31 @@ const source = [
     "title": "Lakin Group",
     "description": "Virtual mission-critical infrastructure",
     "image": "https://s3.amazonaws.com/uifaces/faces/twitter/oskarlevinson/128.jpg",
-    "price": "$86.91"
+    "price": "86.91"
   },
   {
     "title": "hellooooooooo",
     "description": "Triple-buffered discrete website",
     "image": "https://s3.amazonaws.com/uifaces/faces/twitter/coreyginnivan/128.jpg",
-    "price": "$59.45"
+    "price": "59.45"
   },
   {
     "title": "Schuster - Block",
     "description": "Down-sized encompassing time-frame",
     "image": "https://s3.amazonaws.com/uifaces/faces/twitter/ecommerceil/128.jpg",
-    "price": "$45.78"
+    "price": "45.78"
   },
   {
     "title": "Runte - Rippin",
     "description": "helloooooooo",
     "image": "https://s3.amazonaws.com/uifaces/faces/twitter/spedwig/128.jpg",
-    "price": "$59.90"
+    "price": "59.90"
   },
   {
     "title": "Becker, Mitchell and Mitchell",
     "description": "Grass-roots empowering hardware",
     "image": "https://s3.amazonaws.com/uifaces/faces/twitter/fronx/128.jpg",
-    "price": "$67.15"
+    "price": "67.15"
   }
 ]
 var isLoggedin = () => {
@@ -54,7 +54,9 @@ export default class Header1 extends Component {
     super(props);
     this.state = {
       showResults: false,
-      data:[]
+      data:[],
+      productSearchResults:[],
+      value:""
     }
   }
   componentWillMount() {
@@ -90,7 +92,25 @@ export default class Header1 extends Component {
   }
   resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
-  handleResultSelect = (e, { result }) => this.setState({ value: result.title })
+  handleResultSelect = (e, { result }) =>{
+     this.setState({ value: result.productName });
+  
+     setTimeout(() => {
+      if (this.state.value.length < 1) return this.resetComponent()
+
+      const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
+      var isMatch = result => ((re.test(result.productName) || re.test(result.keywords)));
+
+
+      this.setState({
+        isLoading: false,
+        results: _.filter(this.state.data, isMatch),
+      });
+      this.setState({
+         productSearchResults : this.state.results,
+         showResults:true
+      })
+    }, 500) }
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value })
@@ -99,12 +119,12 @@ export default class Header1 extends Component {
       if (this.state.value.length < 1) return this.resetComponent()
 
       const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-      var isMatch = result => (re.test(result.title) || re.test(result.description));
+      var isMatch = result => ((re.test(result.productName) || re.test(result.keywords)));
 
 
       this.setState({
         isLoading: false,
-        results: _.filter(source, isMatch),
+        results: _.filter(this.state.data, isMatch),
       })
     }, 500)
   }
@@ -169,24 +189,8 @@ export default class Header1 extends Component {
         />
           <Grid padded>
             <Grid.Row columns={5} stackable>
-              <Grid.Column>
-                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
-              </Grid.Column>
-              <Grid.Column>
-                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
-              </Grid.Column>
-              <Grid.Column>
-                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
-              </Grid.Column>
-              <Grid.Column>
-                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
-              </Grid.Column>
-              <Grid.Column>
-                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
-              </Grid.Column>
-              <Grid.Column>
-                <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" category="phone" buyprice="40000" rentprice="500" />
-              </Grid.Column>
+              
+              {this.state.productSearchResults.map((product)=><Grid.Column key={product.productId}><Pcard imgurl={"http://localhost:8080/images/"+product.img1} productname={product.productName} type={product.type} buyprice={product.price} rentprice={product.rent} productId={product.productId} onChange={this.handleproductchange}/></Grid.Column>)}
             </Grid.Row>
           </Grid></div> : ""}
         <div>

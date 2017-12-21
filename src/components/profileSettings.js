@@ -29,7 +29,7 @@ export default class ProfileSettings extends React.Component {
           this.setState({errorMessage:'More characters in Password required!'})
           this.setState({active:true});
       }
-      else if(this.state.newPassword==this.state.confirmPassword){
+      else if(this.state.newPassword!=this.state.confirmPassword){
         this.setState({
           errorHeader:"Matching Mistake",
           errorMessage:"New Password and Confirm Password fields didn't match",
@@ -37,7 +37,7 @@ export default class ProfileSettings extends React.Component {
         })
       }
       else{ 
-        fetch('http://localhost:8080/product/data',{
+        fetch('http://localhost:8080/user/changePassword',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
@@ -106,7 +106,7 @@ export default class ProfileSettings extends React.Component {
         <Form size='large' onSubmit={this.handleFormSubmit1}>
 
               <Form.Input label='Current Password' placeholder='Current Password' name='currentPassword' value={currentPassword} onChange={this.handleChange} />
-              <Form.Input label='New Password' placeholder='New vPassword' name='newPassword' value={newPassword} onChange={this.handleChange} />
+              <Form.Input label='New Password' placeholder='New Password' name='newPassword' value={newPassword} onChange={this.handleChange} />
               <Form.Input label='Confirm Password' placeholder='Confirm Password' name='confirmPassword' value={confirmPassword} onChange={this.handleChange} />
               <Form.Button content='Submit' />    
         </Form>
