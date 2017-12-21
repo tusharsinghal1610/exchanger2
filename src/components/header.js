@@ -64,7 +64,7 @@ export default class Header1 extends Component {
     console.log("componentdid mount");
     if (!sessionStorage.getItem("productListHere")) {
       
-      fetch('http://localhost:8080/getproducts', {
+      fetch('http://localhost:8080/search', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
