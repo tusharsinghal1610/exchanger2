@@ -10,9 +10,20 @@ export default class Electronics extends React.Component {
         super(props);
         this.state={
             active:true,
-            data:[]
+            data:[],
+            shouldSidebar:'none'
         }
     }
+    w3_open = () =>{
+        this.setState({
+          shouldSidebar:"block"
+        });
+      }
+      w3_close = () =>{
+        this.setState({
+          shouldSidebar:"none"
+        });
+      }
     handleproductchange=()=>{
         console.log("yoooooooooooooohooooooooooooooooooohohohoho");
     }
@@ -68,14 +79,21 @@ export default class Electronics extends React.Component {
     }
 
     render() {
-        const {active}=this.state;
+        const {active,shouldSidebar}=this.state;
         return (
             <div>
                 
                 <Dimmer active={active}>
       <Loader />
              </Dimmer>
-             
+             <h2><center><div   style={{position:'fixed',bottom:0,backgroundColor:'teal',color:'white',width:'100%',zIndex:1000}} onClick={this.w3_open}>APPLY FILTERS</div></center></h2>
+               <div className="w3-sidebar w3-bar-block w3-border-right w3-animate-bottom" style={{display:shouldSidebar,zIndex:2000,width:'100%'}} id="mySidebar">
+               <button onClick={this.w3_close} className="w3-bar-item w3-large">Close &times;</button>
+               <Link to="/addproduct" className="w3-bar-item w3-button">My Products</Link>
+               <Link to="/profilesettings" className="w3-bar-item w3-button">Profile Settings</Link>
+               <Link to="/"  onClick={this.handleLogoutClick} className="w3-bar-item w3-button">Log Out</Link>
+             </div>
+
                 <Header1 />
                 
                 <Responsive minWidth={1125}><br /><br /><br /><br /></Responsive>
@@ -102,8 +120,10 @@ export default class Electronics extends React.Component {
                         {this.state.data.map((product)=><Grid.Column key={product.productId}><Pcard imgurl={"http://localhost:8080/images/"+product.img1} productname={product.productName} type={product.type} buyprice={product.price} rentprice={product.rent} productId={product.productId} onChange={this.handleproductchange}/></Grid.Column>)}
                    
                 </Grid>
+                <br/><br/>
                 </center>
                 <Postad/>
+        
             </div>
         )
     }

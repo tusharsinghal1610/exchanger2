@@ -228,7 +228,7 @@ export default class Header1 extends Component {
         </Responsive>
         <Responsive maxWidth={1124}>
         
-        <div className="w3-sidebar w3-bar-block w3-border-right" style={{display:shouldSidebar,zIndex:2000}} id="mySidebar">
+        <div className="w3-sidebar w3-bar-block w3-border-right w3-animate-left" style={{display:shouldSidebar,zIndex:2000}} id="mySidebar">
   <button onClick={this.w3_close} className="w3-bar-item w3-large">Close &times;</button>
   <Link to="/addproduct" className="w3-bar-item w3-button">My Products</Link>
   <Link to="/profilesettings" className="w3-bar-item w3-button">Profile Settings</Link>
