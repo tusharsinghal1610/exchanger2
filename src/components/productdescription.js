@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Grid, Image, Header, Dimmer, Loader } from 'semantic-ui-react';
+import { Button, Grid, Image, Header, Dimmer, Loader,Responsive } from 'semantic-ui-react';
 import Slider from 'react-slick';
 import Header1 from './header';
 import Postad from './postad';
@@ -89,8 +89,9 @@ export default class Productdes extends React.Component {
                     <Loader />
                 </Dimmer>
                 <Header1 />
-                <br /><br /><br /><br />
-                <Grid>
+                
+  <Responsive minWidth={1125}><br /><br /><br /><br /></Responsive>
+                <Grid stackable>
                     <Grid.Column width={1} />
                     <Grid.Column width={5}>
                         <Slider {...settings} >

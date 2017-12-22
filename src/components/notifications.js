@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid,Header } from 'semantic-ui-react'
+import { Grid,Header,Responsive } from 'semantic-ui-react'
 import Notification from './notification'
 import Header1 from './header';
 import Postad from './postad';
@@ -8,7 +8,8 @@ export default class Notifications extends React.Component {
         return (
             <div>
                 <Header1/>
-                <br/><br/><br/><br/>
+                
+  <Responsive minWidth={1125}><br /><br /><br /><br /></Responsive>
                 <Grid>
                     <Grid.Column width={2} />
                     <Grid.Column width={12}>

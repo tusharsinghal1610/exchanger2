@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown , Select, Dimmer, Icon} from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown , Select, Dimmer, Icon, Responsive} from 'semantic-ui-react';
 import Header1 from './header';
 import {geolocated} from 'react-geolocated';
 import { Redirect } from 'react-router';
+
+import {Link} from 'react-router-dom';
 const cities =[
 
 ]
@@ -360,7 +362,8 @@ return (
   <Header1/>  
   <div style={mystyle}>
 
-  <br/><br/><br/><br/>
+  
+  <Responsive minWidth={1125}><br /><br /><br /><br /></Responsive>
     <Grid
       centered
     >
@@ -468,6 +471,8 @@ return (
             
 
             <Form.Button type='submit' color='teal' fluid size='large'>Signup</Form.Button>
+
+            <center><div>Already Registered? please <Link to="/login">Login</Link></div></center>
           </Segment>
         </Form>
         <Dimmer

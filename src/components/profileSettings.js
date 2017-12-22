@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header,Grid,Accordion,Icon,Form,Dimmer } from 'semantic-ui-react';
+import { Header,Grid,Accordion,Icon,Form,Dimmer,Responsive } from 'semantic-ui-react';
 import Header1 from './header';
 import Postad from './postad';
 export default class ProfileSettings extends React.Component {
@@ -88,10 +88,11 @@ export default class ProfileSettings extends React.Component {
         return (
             <div>
                 <Header1 />
-                <br /><br /><br /><br />
+                
+  <Responsive minWidth={1125}><br /><br /><br /><br /></Responsive>
                 <Grid>
-                    <Grid.Column width={3} />
-                    <Grid.Column width={10}>
+                    <Grid.Column width={1} />
+                    <Grid.Column width={14}>
                         <Header
                             as='h2'
                             icon='cart'
@@ -139,7 +140,7 @@ export default class ProfileSettings extends React.Component {
         </Accordion.Content>
       </Accordion>
                     </Grid.Column>
-                    <Grid.Column width={3} />
+                    <Grid.Column width={1} />
                 </Grid>
                 <Dimmer
           active={active}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown, Select, Dimmer, Icon } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Message, Segment, Dropdown, Select, Dimmer, Icon,Responsive } from 'semantic-ui-react';
 import Header1 from './header';
 import { Redirect } from 'react-router';
+import {Link} from 'react-router-dom';
 
 export default class login extends Component {
     state = {
@@ -80,7 +81,7 @@ export default class login extends Component {
                 <Header1 />
                 <div style={mystyle}>
 
-                    <br /><br /><br /><br />
+                <Responsive minWidth={1125}><br /><br /><br /><br /></Responsive>
                     <Grid
                         centered
                     >
@@ -115,7 +116,7 @@ export default class login extends Component {
                                 </Segment>
                             </Form>
                             <Segment>
-                               <center> New to us? <a href="signup"><b>Sign up</b></a></center>
+                               <center> New to us? <Link to="signup"><b>Sign up</b></Link></center>
                            </Segment>
                             <Dimmer
                                 active={active}

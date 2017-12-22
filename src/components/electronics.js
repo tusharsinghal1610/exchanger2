@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Button, Icon, Header, Grid, Card,Dimmer, Loader } from 'semantic-ui-react';
+import { Button, Icon, Header, Grid, Card,Dimmer, Loader,Responsive } from 'semantic-ui-react';
 import Header1 from './header'
 import Pcard from './Pcard';
 import Postad from './postad';
@@ -71,11 +71,14 @@ export default class Electronics extends React.Component {
         const {active}=this.state;
         return (
             <div>
+                
                 <Dimmer active={active}>
       <Loader />
              </Dimmer>
+             
                 <Header1 />
-                <br /><br /><br /><br />
+                
+                <Responsive minWidth={1125}><br /><br /><br /><br /></Responsive>
                 <center>
                     <Button.Group>
                         <Button basic color='grey'><b><Icon name='mobile' /> Mobiles</b></Button>
@@ -90,14 +93,16 @@ export default class Electronics extends React.Component {
                     icon='mobile'
                     content='Electronics'
                 />
-                <Grid padded>
-                    <Grid.Row columns={5} stackable>
+                <center>
+                <Grid stackable columns={5}>
+                    
                                             <Grid.Column>
                         <Pcard imgurl="Assets/wireframe.png" productname="nokia lumia s7" type="phone" buyprice="40000" rentprice="500"/>
                         </Grid.Column>
                         {this.state.data.map((product)=><Grid.Column key={product.productId}><Pcard imgurl={"http://localhost:8080/images/"+product.img1} productname={product.productName} type={product.type} buyprice={product.price} rentprice={product.rent} productId={product.productId} onChange={this.handleproductchange}/></Grid.Column>)}
-                    </Grid.Row>
+                   
                 </Grid>
+                </center>
                 <Postad/>
             </div>
         )

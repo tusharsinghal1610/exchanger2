@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Header, Grid, Button, Icon, Form,Dimmer } from 'semantic-ui-react';
+import { Header, Grid, Button, Icon, Form,Dimmer,Responsive } from 'semantic-ui-react';
 import { Modal } from 'antd';
 import Upload from 'antd/lib/upload';
 import 'antd/lib/upload/style/css';
@@ -321,7 +321,8 @@ handleClose = () => this.setState({ active: false });
     return (
       <div>
         <Header1 />
-        <br /><br /><br /><br />
+        
+  <Responsive minWidth={1125}><br /><br /><br /><br /></Responsive>
         <Grid>
           <Grid.Column width={1} />
           <Grid.Column width={14}>

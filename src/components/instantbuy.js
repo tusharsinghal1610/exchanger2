@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Grid, Header, Button, Icon, Dimmer, Loader, Image } from 'semantic-ui-react'
+import { Table, Grid, Header, Button, Icon, Dimmer, Loader, Image, Responsive } from 'semantic-ui-react'
 import Header1 from './header'
 import Tabler from './tablerow';
 import Postad from './postad';
@@ -52,7 +52,8 @@ export default class InstantBuy extends React.Component {
                     <Loader />
                 </Dimmer>
                 <Header1 />
-                <br /><br /><br /><br />
+                
+  <Responsive minWidth={1125}><br /><br /><br /><br /></Responsive>
                 <Grid>
                     <Grid.Column width={2} />
                     <Grid.Column width={12}>
